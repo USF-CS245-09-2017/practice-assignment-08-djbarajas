@@ -4,6 +4,7 @@ public class BST<T> {
     public BST(){
         root = null;
     }
+
     public boolean find(Comparable v){
         return find(root,v);
     }
@@ -51,9 +52,50 @@ public class BST<T> {
         }
         return;
     }
+    public void delete(Comparable v){
+        root = delete(root,v);
+    }
 
-    public BSTNode delete(Comparable v){
-        return root;
+    private BSTNode delete(BSTNode node, Comparable v){
+        if(node==null)
+            return null;
+        if(node.getData().compareTo(v) == 0){
+            if(node.getLeft()==null){
+                return node.getRight();
+            }
+            else if(node.getRight()==null){
+                return node.getLeft();
+            }
+            else{
+                if(node.getRight().getLeft() == null){
+                    node.setData(node.getRight().getData());
+                    node.setRight(node.getRight().getRight());
+                    return node;
+                }
+                else{
+                    node.setData(removeSmallest(node.getRight()));
+                    return node;
+                }
+            }
+        }
+        else if(node.getData().compareTo(v) < 0){
+            node.setRight(delete(node.getRight(),v));
+        }
+        else{
+            node.setLeft(delete(node.getLeft(),v));
+        }
+        return node;
+    }
+
+    private Comparable removeSmallest(BSTNode node){
+        if(node.getLeft().getLeft() == null){
+            Comparable smallest = node.getLeft().getData();
+            node.setLeft(node.getLeft().getRight());
+            return smallest;
+        }
+        else{
+            return removeSmallest(node.getLeft());
+        }
     }
 
 }
