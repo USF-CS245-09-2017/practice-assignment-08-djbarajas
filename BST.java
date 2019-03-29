@@ -1,6 +1,9 @@
 public class BST<T> {
     BSTNode root;
 
+    public BST(){
+        root = null;
+    }
     public boolean find(Comparable v){
         return find(root,v);
     }
@@ -48,8 +51,9 @@ public class BST<T> {
         }
         return;
     }
-    public void delete(Comparable v){
-        return;
+
+    public BSTNode delete(Comparable v){
+        return root;
     }
 
 }
