@@ -14,7 +14,7 @@ public class BST<T> {
             return false;
         if(node.getData().compareTo(v) == 0)
             return true;
-        else if(node.getData().compareTo(v) > 0)
+        else if(node.getData().compareTo(v) < 0)
             return find(node.getRight(),v);
         else
             return find(node.getLeft(),v);
@@ -29,7 +29,7 @@ public class BST<T> {
             BSTNode n = new BSTNode(v);
             return n;
         }
-        else if(node.getData().compareTo(v) > 0){
+        else if(node.getData().compareTo(v) < 0){
             BSTNode n = insert(node.getRight(),v);
             node.setRight(n);
         }
@@ -52,6 +52,7 @@ public class BST<T> {
         }
         return;
     }
+
     public void delete(Comparable v){
         root = delete(root,v);
     }
@@ -78,7 +79,7 @@ public class BST<T> {
                 }
             }
         }
-        else if(node.getData().compareTo(v) < 0){
+        else if(node.getData().compareTo(v) > 0){
             node.setRight(delete(node.getRight(),v));
         }
         else{
