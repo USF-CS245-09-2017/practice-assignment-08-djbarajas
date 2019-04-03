@@ -3,7 +3,7 @@ public class BSTNode<T> {
     BSTNode left;
     BSTNode right;
 
-    //Acessors(get)
+    //Acessors(getters)
     public BSTNode getLeft(){
         return this.left;
     }
@@ -13,7 +13,7 @@ public class BSTNode<T> {
     public Comparable getData(){
         return this.data;
     }
-    //mutators(set)
+    //mutators(setters)
     public void setRight(BSTNode v){
         this.right = v;
     }

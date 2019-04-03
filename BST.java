@@ -1,6 +1,9 @@
 public class BST<T> {
     BSTNode root;
-
+    /*
+    * BST()
+    * constructor, creates a BST
+     */
     public BST(){
         root = null;
     }
@@ -8,7 +11,11 @@ public class BST<T> {
     public boolean find(Comparable v){
         return find(root,v);
     }
-
+    /*
+    * find()
+    * recursively looks to the left or right of the current node
+    * to find the element in the BST
+     */
     private boolean find(BSTNode node, Comparable v){
         if(node == null)
             return false;
@@ -23,7 +30,11 @@ public class BST<T> {
     public void insert(Comparable v){
         root = insert(root,v);
     }
-
+    /*
+    * insert()
+    * recursively calls itself to create a node checking if it
+    * is to the left or right of the current node
+     */
     private BSTNode insert(BSTNode node, Comparable v){ //O()
         if(node == null){
             BSTNode n = new BSTNode(v);
@@ -43,7 +54,12 @@ public class BST<T> {
     public void print(){
         print(root);
     }
-    //this is in order
+
+    /*
+     print()
+     prints the node starting from the left then to the right
+     this is in order printing
+     */
     private void print(BSTNode node){
         if(!(node==null)){ // for any in order traversal
             print(node.getLeft());
@@ -56,7 +72,12 @@ public class BST<T> {
     public void delete(Comparable v){
         root = delete(root,v);
     }
-
+    /*
+    * delete()
+    * find the successor of the node to delete by going one to the right
+    * then all the way to the left to input that value in the spot being
+    * deleted
+     */
     private BSTNode delete(BSTNode node, Comparable v){
         if(node==null)
             return null;
@@ -87,6 +108,12 @@ public class BST<T> {
         }
         return node;
     }
+
+    /*
+    * removeSmallest()
+    * gets the node all the way to the left of the input node
+    * and returns it to the delete function
+     */
 
     private Comparable removeSmallest(BSTNode node){
         if(node.getLeft().getLeft() == null){
